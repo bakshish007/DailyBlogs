@@ -83,7 +83,7 @@
       fetchBlogFiles();
 
       function fetchBlogFiles() {
-        fetch('/DailyBlogs/blogs/')
+        fetch('blogs/')
           .then(response => response.text())
           .then(data => {
             const parser = new DOMParser();
@@ -94,7 +94,7 @@
               const fileName = link.getAttribute('href').split('/').pop();
               const dateParts = fileName.split('.')[0].split('-');
               const formattedDate = `${dateParts[0]}-${dateParts[1]}-${dateParts[2]}`;
-              const blogUrl = `/DailyBlogs/blogs/${fileName}`;
+              const blogUrl = `blogs/${fileName}`;
 
               return fetch(blogUrl)
                 .then(response => response.text())
