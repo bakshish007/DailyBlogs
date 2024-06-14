@@ -83,7 +83,7 @@
       fetchBlogFiles();
 
       function fetchBlogFiles() {
-        fetch('blogs/')
+        fetch('https://api.github.com/repos/bakshish007/DailyBlogs/contents/blogs?ref=main')
           .then(response => response.text())
           .then(data => {
             const parser = new DOMParser();
