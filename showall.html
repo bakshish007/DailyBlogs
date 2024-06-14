@@ -94,7 +94,7 @@
               const fileName = link.getAttribute('href').split('/').pop();
               const dateParts = fileName.split('.')[0].split('-');
               const formattedDate = `${dateParts[0]}-${dateParts[1]}-${dateParts[2]}`;
-              const blogUrl = `/blogs/${fileName}`;
+              const blogUrl = `https://github.com/bakshish007/DailyBlogs/tree/main/blogs/${fileName}`;
 
               return fetch(blogUrl)
                 .then(response => response.text())
