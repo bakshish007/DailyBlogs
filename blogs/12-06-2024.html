@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Git and GitHub</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+    .blog-content {
+      max-width: 800px;
+      overflow: auto;
+      margin: 0 auto;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .blog-title {
+      font-size: 1.8em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .blog-section {
+      margin-bottom: 20px;
+    }
+    .blog-section h3 {
+      font-size: 1.4em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .blog-section ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+    .blog-section p {
+      margin-bottom: 10px;
+    }
+    .code-section {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 3px;
+      overflow-x: auto;
+    }
+    .code-section pre {
+      margin: 0;
+    }
+    .note {
+      background-color: #fafafa;
+      border-left: 3px solid #007bff;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .note p {
+      margin-bottom: 0;
+    }
+    .back-link {
+      text-align: center;
+      margin-top: 15px;
+      padding-bottom: 15px;
+    }
+    .back-link a {
+      text-decoration: none;
+      color: #3182ce;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .back-link a:hover {
+      color: #2c5282;
+    }
+  </style>
+</head>
+<body>
+  <div class="blog-content">
+    <h1 class="blog-title">Git and Github:</h1>
+    <div class="blog-section">
+      <h3>Introduction to Git and Github</h3>
+      <p>
+        Git is a distributed version control system that helps track changes to files and coordinates work among multiple people on a project. Github is a web-based platform that provides hosting for software development version control using Git.
+      </p>
+    </div>
+
+    <div class="blog-section">
+      <h3>Git Basics</h3>
+      <ul>
+        <li><strong>Git Clone:</strong> Clones a repository from Github to your local machine.
+          <br><code class="code-section">git clone https://github.com/username/repository.git</code></li>
+        <li><strong>Git Status:</strong> Checks the status of files in your repository.
+          <br><code class="code-section">git status</code></li>
+        <li><strong>Add and Commit:</strong> Stage changes and commit them with a message.
+          <br><code class="code-section">git add filename</code>
+          <br><code class="code-section">git commit -m "Commit message"</code></li>
+        <li><strong>Push Command:</strong> Push local changes to a remote repository.
+          <br><code class="code-section">git push origin main</code></li>
+      </ul>
+    </div>
+
+    <div class="blog-section">
+      <h3>Branching and Merging</h3>
+      <ul>
+        <li><strong>Git Branch:</strong> List, create, or delete branches.
+          <br><code class="code-section">git branch</code>
+          <br><code class="code-section">git branch -M main</code></li>
+        <li><strong>Merge Commands:</strong> Merge changes from one branch to another.
+          <br><code class="code-section">git merge branchname</code></li>
+        <li><strong>Pull Request:</strong> Propose changes and request that someone review and pull in your contribution.
+          <br><code class="code-section">git pull origin branchname</code></li>
+      </ul>
+    </div>
+
+    <div class="blog-section">
+      <h3>Undoing Changes</h3>
+      <ul>
+        <li><strong>Reset Staged Changes:</strong> Unstage files that were added.
+          <br><code class="code-section">git reset filename</code></li>
+        <li><strong>Reset Committed Changes:</strong> Undo the last commit.
+          <br><code class="code-section">git reset HEAD~1</code></li>
+        <li><strong>Reset Multiple Commits:</strong> Reset to a specific commit.
+          <br><code class="code-section">git reset --hard commit-hash</code></li>
+      </ul>
+    </div>
+
+    <div class="blog-section">
+      <h3>Merging Conflicts</h3>
+      <p>
+        Merge conflicts occur when Git cannot automatically resolve differences between commits. They can be resolved manually using the 'git merge' command or through pull requests.
+      </p>
+    </div>
+
+    <div class="blog-section">
+      <h3>Forking a Repository</h3>
+      <p>
+        Forking creates a copy of a repository that you can modify and experiment with. You can contribute changes back to the original repository using pull requests.
+      </p>
+    </div>
+
+    <div class="blog-section">
+      <h3>Conclusion</h3>
+      <p>
+        Git and Github are powerful tools for version control and collaboration in software development. Understanding their basic commands and workflows is essential for effective project management and teamwork.
+      </p>
+    </div>
+
+    <div class="back-link">
+      <a style="padding-bottom: 10px;" href="../index.html">Back to Main Page</a>
+    </div>
+  </div>
+  <div style="position: fixed; bottom: 20px; right: 20px; background-color: rgba(240, 240, 240, 0.9); padding: 5px 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    Developed by <a href="https://github.com/bakshish007" target="_blank" style="color: #555; font-weight: 600;">@Bakshish Singh</a>
+  </div>
+  
+</body>
+</html>
