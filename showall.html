@@ -70,7 +70,7 @@
   </div>
 
   <div class="back-link">
-    <a href="/index.html">Back to Main Page</a>
+    <a href="/DailyBlogs/index.html">Back to Main Page</a>
   </div>
   <div style="position: fixed; bottom: 20px; right: 20px; background-color: rgba(240, 240, 240, 0.9); padding: 5px 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
     Developed by <a href="https://github.com/bakshish007" target="_blank" style="color: #555; font-weight: 600;">@Bakshish Singh</a>
@@ -83,7 +83,7 @@
       fetchBlogFiles();
 
       function fetchBlogFiles() {
-        fetch('blogs/')
+        fetch('/DailyBlogs/blogs/')
           .then(response => response.text())
           .then(data => {
             const parser = new DOMParser();
