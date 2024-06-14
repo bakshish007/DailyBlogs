@@ -205,7 +205,7 @@
           this.showDatepicker = false;
 
           const formattedDate = `${('0' + selectedDate.getDate()).slice(-2)}-${('0' + (selectedDate.getMonth() + 1)).slice(-2)}-${selectedDate.getFullYear()}`;
-          const blogUrl = `DailyBlogs/blogs/${formattedDate}.html`;
+          const blogUrl = `blogs/${formattedDate}.html`;
 
           fetch(blogUrl)
             .then(response => {
