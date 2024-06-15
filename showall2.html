@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #loading {
+            display: none;
+            text-align: center;
+            font-size: 20px;
+            color: #333;
+        }
+        #error-message {
+            display: none;
+            text-align: center;
+            font-size: 20px;
+            color: red;
+        }
+        .blog-item {
+            padding: 10px;
+            margin: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+        .blog-item span {
+            display: block;
+        }
+        .blog-item a {
+            color: blue;
+            text-decoration: none;
+        }
+        .blog-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">Loading...</div>
+    <div id="error-message">Failed to load blogs. Please try again later.</div>
+    <div id="blogList"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const blogListContainer = document.getElementById('blogList');
+            const loadingIndicator = document.getElementById('loading');
+            const errorMessage = document.getElementById('error-message');
+            const repoOwner = 'bakshish007'; // Replace with your GitHub username
+            const repoName = 'DailyBlogs'; // Replace with your repository name
+            const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/blogs`;
+
+            loadingIndicator.style.display = 'block';
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const htmlFiles = data.filter(item => item.name.endsWith('.html'));
+
+                    // Sort files by date in reverse order
+                    htmlFiles.sort((a, b) => {
+                        const dateA = new Date(a.name.split('.')[0].split('-').join('-'));
+                        const dateB = new Date(b.name.split('.')[0].split('-').join('-'));
+                        return dateB - dateA;
+                    });
+
+                    const fetchBlogTitles = htmlFiles.map(file => {
+                        const fileName = file.name;
+                        const dateParts = fileName.split('.')[0].split('-');
+                        const formattedDate = `${dateParts[0]}-${dateParts[1]}-${dateParts[2]}`;
+                        const blogUrl = `/blogs/${fileName}`;
+
+                        return fetch(file.download_url)
+                            .then(response => response.text())
+                            .then(blogContent => {
+                                const doc = new DOMParser().parseFromString(blogContent, 'text/html');
+                                const title = doc.querySelector('title').textContent;
+
+                                return `
+                                    <div class="blog-item all-link">
+                                        <span>${title}</span>
+                                        <span>${formattedDate}</span>
+                                        <a href="DailyBlogs/${blogUrl}">Read Blog</a>
+                                    </div>
+                                `;
+                            });
+                    });
+
+                    Promise.all(fetchBlogTitles)
+                        .then(blogItems => {
+                            blogListContainer.innerHTML = blogItems.join('');
+                            loadingIndicator.style.display = 'none';
+                        })
+                        .catch(error => {
+                            console.error('Error fetching blog titles:', error);
+                            loadingIndicator.style.display = 'none';
+                            errorMessage.style.display = 'block';
+                        });
+                })
+                .catch(error => {
+                    console.error('Error fetching file list:', error);
+                    loadingIndicator.style.display = 'none';
+                    errorMessage.style.display = 'block';
+                });
+        });
+    </script>
+</body>
+</html>
