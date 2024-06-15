@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const fileName = file.name;
         const dateParts = fileName.split('.')[0].split('-');
         const formattedDate = `${dateParts[0]}-${dateParts[1]}-${dateParts[2]}`;
-        const blogUrl = `/blogs/${fileName}`;
+        const blogUrl = `/${repoName}/blogs/${fileName}`;
 
         return fetch(file.download_url)
           .then(response => response.text())
