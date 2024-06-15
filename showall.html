@@ -76,51 +76,49 @@
     Developed by <a href="https://github.com/bakshish007" target="_blank" style="color: #555; font-weight: 600;">@Bakshish Singh</a>
   </div>
   
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const blogListContainer = document.getElementById('blogList');
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const blogListContainer = document.getElementById('blogList');
+  const repoOwner = 'bakshish007';
+  const repoName = 'DailyBlogs';
+  const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/blogs`; // API endpoint for the blogs folder
 
-      fetchBlogFiles();
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const htmlFiles = data.filter(item => item.name.endsWith('.html'));
 
-      function fetchBlogFiles() {
-        fetch('/blogs/')
+      const fetchBlogTitles = htmlFiles.map(file => {
+        const fileName = file.name;
+        const dateParts = fileName.split('.')[0].split('-');
+        const formattedDate = `${dateParts[0]}-${dateParts[1]}-${dateParts[2]}`;
+        const blogUrl = `/blogs/${fileName}`;
+
+        return fetch(file.download_url)
           .then(response => response.text())
-          .then(data => {
-            const parser = new DOMParser();
-            const htmlDocument = parser.parseFromString(data, 'text/html');
-            const links = Array.from(htmlDocument.querySelectorAll('a[href$=".html"]'));
+          .then(blogContent => {
+            const doc = new DOMParser().parseFromString(blogContent, 'text/html');
+            const title = doc.querySelector('title').textContent;
 
-            const fetchBlogTitles = links.map(link => {
-              const fileName = link.getAttribute('href').split('/').pop();
-              const dateParts = fileName.split('.')[0].split('-');
-              const formattedDate = `${dateParts[0]}-${dateParts[1]}-${dateParts[2]}`;
-              const blogUrl = `/blogs/${fileName}`;
+            return `
+              <div class="blog-item all-link">
+                <span>${title}</span>
+                <span>${formattedDate}</span>
+                <a href="${blogUrl}">Read Blog</a>
+              </div>
+            `;
+          });
+      });
 
-              return fetch(blogUrl)
-                .then(response => response.text())
-                .then(blogContent => {
-                  const doc = new DOMParser().parseFromString(blogContent, 'text/html');
-                  const title = doc.querySelector('title').textContent;
+      Promise.all(fetchBlogTitles)
+        .then(blogItems => {
+          blogListContainer.innerHTML = blogItems.join('');
+        })
+        .catch(error => console.error('Error fetching blog titles:', error));
+    })
+    .catch(error => console.error('Error fetching file list:', error));
+});
+</script>
 
-                  return `
-                    <div class="blog-item all-link">
-                      <span>${title}</span>
-                      <span>${formattedDate}</span>
-                      <a href="${blogUrl}">Read Blog</a>
-                    </div>
-                  `;
-                });
-            });
-
-            Promise.all(fetchBlogTitles)
-              .then(blogItems => {
-                blogListContainer.innerHTML = blogItems.join('');
-              })
-              .catch(error => console.error('Error fetching blog titles:', error));
-          })
-          .catch(error => console.error('Error fetching blogs:', error));
-      }
-    });
-  </script>
 </body>
 </html>
