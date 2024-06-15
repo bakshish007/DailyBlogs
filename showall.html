@@ -7,6 +7,12 @@
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
   <title>All Blogs</title>
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
     .blog-list {
       max-width: 800px;
       margin: 0 auto;
@@ -31,7 +37,6 @@
     .blog-item a {
       color: #007bff;
       text-decoration: none;
-      margin-left: 20px;
     }
     .back-link {
       text-align: center;
@@ -63,60 +68,63 @@
 </head>
 <body class="bg-gray-100 p-4">
   <div class="blog-list">
-    <h2 class="text-lg font-bold mb-4" style="padding-left: 10px;">All Blogs</h2>
+    <h2 class="text-lg font-bold mb-4">All Blogs</h2>
     <div id="blogList">
       <!-- Blog items will be dynamically added here -->
     </div>
   </div>
 
   <div class="back-link mt-8">
-    <a href="/index.html">Back to Main Page</a>
+    <a href="DailyBlogs/index.html">Back to Main Page</a>
   </div>
   <div class="fixed bottom-4 right-4 bg-gray-200 p-2 rounded shadow">
     Developed by <a href="https://github.com/bakshish007" target="_blank" class="font-bold text-gray-700">@Bakshish Singh</a>
   </div>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const blogListContainer = document.getElementById('blogList');
-  const repoOwner = 'bakshish007';
-  const repoName = 'DailyBlogs';
-  const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/blogs`; // API endpoint for the blogs folder
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const blogListContainer = document.getElementById('blogList');
+      const repoOwner = 'bakshish007';
+      const repoName = 'DailyBlogs';
+      const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/blogs`; // API endpoint for the blogs folder
 
-  fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
-      const htmlFiles = data.filter(item => item.name.endsWith('.html'));
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const htmlFiles = data.filter(item => item.name.endsWith('.html'));
 
-      const fetchBlogTitles = htmlFiles.map(file => {
-        const fileName = file.name;
-        const dateParts = fileName.split('.')[0].split('-');
-        const formattedDate = `${dateParts[0]}-${dateParts[1]}-${dateParts[2]}`;
-        const blogUrl = `/${repoName}/blogs/${fileName}`;
+          const fetchBlogTitles = htmlFiles.map(file => {
+            const fileName = file.name;
+            const dateParts = fileName.split('.')[0].split('-');
+            const formattedDate = `${dateParts[0]}-${dateParts[1]}-${dateParts[2]}`;
+            const blogUrl = `/${repoName}/blogs/${fileName}`;
 
-        return fetch(file.download_url)
-          .then(response => response.text())
-          .then(blogContent => {
-            const doc = new DOMParser().parseFromString(blogContent, 'text/html');
-            const title = doc.querySelector('title').textContent;
+            return fetch(file.download_url)
+              .then(response => response.text())
+              .then(blogContent => {
+                const doc = new DOMParser().parseFromString(blogContent, 'text/html');
+                const title = doc.querySelector('title').textContent;
 
-            return `
-              <div class="blog-item all-link">
-                <span>${title}</span>
-                <span>${formattedDate}</span>
-                <a href="${blogUrl}">Read Blog</a>
-              </div>
-            `;
+                return `
+                  <div class="blog-item">
+                    <div class="title-date">
+                      <span class="font-bold">${title}</span>
+                      <span class="text-gray-600">${formattedDate}</span>
+                    </div>
+                    <a href="${blogUrl}" class="text-blue-500 hover:underline">Read Blog</a>
+                  </div>
+                `;
+              });
           });
-      });
 
-      Promise.all(fetchBlogTitles)
-        .then(blogItems => {
-          blogListContainer.innerHTML = blogItems.join('');
+          Promise.all(fetchBlogTitles)
+            .then(blogItems => {
+              blogListContainer.innerHTML = blogItems.join('');
+            })
+            .catch(error => console.error('Error fetching blog titles:', error));
         })
-        .catch(error => console.error('Error fetching blog titles:', error));
-    })
-    .catch(error => console.error('Error fetching file list:', error));
-});
-</script>
+        .catch(error => console.error('Error fetching file list:', error));
+    });
+  </script>
 </body>
 </html>
