@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML and CSS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    pre {
+      background-color: #f8f8f8;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow: auto;
+    }
+    code {
+      font-family: monospace;
+      background-color: #f8f8f8;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    .back-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .back-link a {
+      text-decoration: none;
+      color: #3182ce;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .back-link a:hover {
+      color: #2c5282;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .footer a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>HTML and CSS</h1>
+    <p>Welcome to our in-depth guide on HTML and CSS. In this blog, we will cover various advanced topics to help you become proficient in web development. Whether you're a beginner or an experienced developer, there's something for everyone. Let's dive in!</p>
+    
+    <h2>HTML Topics</h2>
+    
+    <h3>1. Semantic HTML</h3>
+    <p>Semantic HTML refers to the use of HTML tags that provide meaning to the content of a web page. These tags not only help with the structure of the page but also improve accessibility and SEO. Common semantic tags include:</p>
+    <ul>
+      <li><code>&lt;header&gt;</code>: Represents introductory content or a set of navigational links.</li>
+      <li><code>&lt;nav&gt;</code>: Represents a section of a page that links to other pages or to parts within the page.</li>
+      <li><code>&lt;article&gt;</code>: Represents a self-contained composition that could be distributed independently.</li>
+      <li><code>&lt;section&gt;</code>: Represents a generic section of a document.</li>
+      <li><code>&lt;aside&gt;</code>: Represents content indirectly related to the main content.</li>
+      <li><code>&lt;footer&gt;</code>: Represents the footer for its nearest sectioning content or sectioning root element.</li>
+    </ul>
+    
+    <h3>2. Forms and Input Types</h3>
+    <p>Forms are a crucial part of web development, allowing users to submit data. HTML5 introduced several new input types that enhance form functionality and user experience:</p>
+    <ul>
+      <li><code>&lt;input type="email"&gt;</code>: Validates the input as an email address.</li>
+      <li><code>&lt;input type="tel"&gt;</code>: Validates the input as a telephone number.</li>
+      <li><code>&lt;input type="url"&gt;</code>: Validates the input as a URL.</li>
+      <li><code>&lt;input type="number"&gt;</code>: Allows only numerical input.</li>
+      <li><code>&lt;input type="range"&gt;</code>: Provides a slider control for selecting a value within a specified range.</li>
+      <li><code>&lt;input type="date"&gt;</code>: Provides a date picker.</li>
+      <li><code>&lt;input type="color"&gt;</code>: Provides a color picker.</li>
+    </ul>
+    
+    <h3>3. Multimedia Elements</h3>
+    <p>HTML5 introduced new elements for embedding multimedia content:</p>
+    <ul>
+      <li><code>&lt;video&gt;</code>: Embeds a video player.</li>
+      <li><code>&lt;audio&gt;</code>: Embeds an audio player.</li>
+      <li><code>&lt;source&gt;</code>: Specifies multiple media resources for media elements (<code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code>).</li>
+      <li><code>&lt;track&gt;</code>: Specifies text tracks for media elements.</li>
+    </ul>
+    <pre><code>&lt;video controls&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+  &lt;source src="video.ogg" type="video/ogg"&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;
+
+&lt;audio controls&gt;
+  &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+  &lt;source src="audio.ogg" type="audio/ogg"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;
+    </code></pre>
+    
+    <h2>CSS Topics</h2>
+    
+    <h3>1. Flexbox</h3>
+    <p>Flexbox is a CSS layout module that provides a more efficient way to lay out, align, and distribute space among items in a container. It is particularly useful for responsive design. Key properties include:</p>
+    <ul>
+      <li><code>display: flex;</code>: Defines a flex container.</li>
+      <li><code>flex-direction</code>: Defines the direction of the flex items (row, row-reverse, column, column-reverse).</li>
+      <li><code>justify-content</code>: Aligns flex items along the main axis (flex-start, flex-end, center, space-between, space-around).</li>
+      <li><code>align-items</code>: Aligns flex items along the cross axis (flex-start, flex-end, center, stretch, baseline).</li>
+      <li><code>flex-wrap</code>: Controls whether the flex items should wrap or not (nowrap, wrap, wrap-reverse).</li>
+    </ul>
+    <pre><code>.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.item {
+  flex: 1 1 auto;
+}
+    </code></pre>
+    
+    <h3>2. Grid Layout</h3>
+    <p>CSS Grid Layout is a two-dimensional layout system for the web. It allows developers to create complex layouts with ease. Key properties include:</p>
+    <ul>
+      <li><code>display: grid;</code>: Defines a grid container.</li>
+      <li><code>grid-template-columns</code>: Defines the columns of the grid.</li>
+      <li><code>grid-template-rows</code>: Defines the rows of the grid.</li>
+      <li><code>grid-column</code>: Specifies the column start and end lines.</li>
+      <li><code>grid-row</code>: Specifies the row start and end lines.</li>
+      <li><code>gap</code>: Defines the gap between grid items.</li>
+    </ul>
+    <pre><code>.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 10px;
+}
+
+.item {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+    </code></pre>
+    
+    <h3>3. Animations and Transitions</h3>
+    <p>CSS allows for the creation of animations and transitions to enhance the user experience. Key properties include:</p>
+    <ul>
+      <li><code>transition</code>: Defines the transition effect for changing properties.</li>
+      <li><code>animation</code>: Defines keyframe animations.</li>
+    </ul>
+    <pre><code>.button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+@keyframes slidein {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: #007bff;
+  animation: slidein 1s ease-in-out;
+}
+    </code></pre>
+    
+    <div class="back-link">
+      <a href="/DailyBlogs/index.html">Back to Main Page</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    Developed by <a href="https://github.com/bakshish007" target="_blank">@Bakshish Singh</a>
+  </div>
+</body>
+</html>
