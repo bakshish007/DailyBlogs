@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>JavaScript Basics Blog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    pre {
+      background-color: #f4f4f4;
+      border: 1px solid #ddd;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .back-link, .all-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .back-link a, .all-link a {
+      text-decoration: none;
+      color: #3182ce;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .back-link a:hover, .all-link a:hover {
+      color: #2c5282;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript Basics</h1>
+
+    
+    <h2>What is JavaScript?</h2>
+    <p>JavaScript is a scripting language that enables you to create dynamically updating content, control multimedia, animate images, and much more.</p>
+    
+    <h2>Adding JavaScript to Your Web Page</h2>
+    <p>You can add JavaScript to your HTML file by using the <code>&lt;script&gt;</code> tag. Here's an example:</p>
+    <pre><code>&lt;script&gt;
+alert('Hello, World!');
+&lt;/script&gt;
+</code></pre>
+    
+    <h2>Variables</h2>
+    <p>Variables are containers for storing data values. In JavaScript, you can declare a variable using <code>var</code>, <code>let</code>, or <code>const</code>.</p>
+    <pre><code>var name = 'John';
+let age = 30;
+const isStudent = true;
+</code></pre>
+
+    <h2>Data Types</h2>
+    <p>JavaScript supports various data types, including:</p>
+    <ul>
+      <li>Strings: <code>'Hello'</code></li>
+      <li>Numbers: <code>10, 10.5</code></li>
+      <li>Booleans: <code>true, false</code></li>
+      <li>Objects: <code>{ name: 'John', age: 30 }</code></li>
+      <li>Arrays: <code>[1, 2, 3, 4, 5]</code></li>
+    </ul>
+
+    <h2>Functions</h2>
+    <p>Functions are blocks of code designed to perform a particular task. Here's an example of a simple function:</p>
+    <pre><code>function greet() {
+  console.log('Hello, World!');
+}
+greet();
+</code></pre>
+
+    <h2>Control Structures</h2>
+    <p>JavaScript supports various control structures, such as:</p>
+    <ul>
+      <li><strong>If Statements</strong>: <code>if (condition) { // code }</code></li>
+      <li><strong>For Loops</strong>: <code>for (let i = 0; i &lt; 5; i++) { // code }</code></li>
+      <li><strong>While Loops</strong>: <code>while (condition) { // code }</code></li>
+    </ul>
+
+    <h2>Events</h2>
+    <p>JavaScript can respond to user interactions by handling events. For example, you can add a click event listener to a button:</p>
+    <pre><code>document.getElementById('myButton').addEventListener('click', function() {
+  alert('Button clicked!');
+});
+</code></pre>
+
+    <div class="back-link">
+        <a href="/DailyBlogs/index.html">Back to Main Page</a>
+    </div>
+    <div style="position: fixed; bottom: 20px; right: 20px; background-color: rgba(240, 240, 240, 0.9); padding: 5px 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+      Developed by <a href="https://github.com/bakshish007" target="_blank" style="color: #555; font-weight: 600;">@Bakshish Singh</a>
+    </div>
+  </div>
+</body>
+</html>
